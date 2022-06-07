@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Counter from './Components/Counter';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+    constructor(){
+      super()
+      this.state={
+        show : false,
+        lolo : 'Hello Olfa'
+      }
+    }
+    // state={
+    //       show : false,
+    //       lolo : 'Hello Olfa'
+    //     }
+        
+    handleShow=()=> this.setState({show : !this.state.show})
+    render(){
+      console.log(this)
+      return(
+        <div>
+          <h1>WS State</h1>
+          <button onClick={this.handleShow}>{this.state.show ? 'Hide' : 'Show'}</button>
+          {
+            this.state.show &&  <Counter lolo={this.state.lolo}/>
+          }
+         
+        </div>
+      )
+    }
 }
 
-export default App;
+export default App
